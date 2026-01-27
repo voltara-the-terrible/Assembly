@@ -104,7 +104,7 @@ local player_esp = {cache = {}} do
         local top, bottom, left, right = math.huge, -math.huge, math.huge, -math.huge;
         local yay = false;
 
-        for _, part in next, (self.Bodyparts) do
+        for _, part in pairs(self.children) do
             if (typeof(part) == "Basepart") then
                 local size = part.Size * 0.5;
                 for i = 1, #dirs do
