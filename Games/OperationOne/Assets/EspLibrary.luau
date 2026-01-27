@@ -105,7 +105,7 @@ local player_esp = {cache = {}} do
         local yay = false;
 
         for _, part in pairs(self.children) do
-            if (typeof(part) == "Basepart") then
+            if (typeof(part) == "Instance" and part.ClassName == "Part") then
                 local size = part.Size * 0.5;
                 for i = 1, #dirs do
                     dir = dirs[i];
