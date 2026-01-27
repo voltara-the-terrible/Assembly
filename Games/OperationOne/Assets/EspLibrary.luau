@@ -20,7 +20,7 @@ local player_esp = {cache = {}} do
     player_esp.__index = player_esp;
     
     player_esp.new = function(model)
-        if (player_esp.cache[model] or model.head.Transparency > 0.8 or v.Name == "LocalViewmodel") then return end;
+        if (player_esp.cache[model] or model.head.Transparency > 0.8 or model.Name == "LocalViewmodel") then return end;
         
         local self = setmetatable({
             ["model"] = model,
