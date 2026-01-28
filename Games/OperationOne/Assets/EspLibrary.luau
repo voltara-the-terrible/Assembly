@@ -118,6 +118,7 @@ local player_esp = {cache = {}} do
             for i = 1, #self.adornments do
                 self.adornments[i].Visible = false;
             end;
+            return;
         end;
         
         self.chams_set = false;
