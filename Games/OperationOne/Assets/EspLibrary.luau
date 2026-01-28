@@ -21,13 +21,12 @@ local is_teammate = function(model)
     local highlights = workspace:QueryDescendants([==[ Highlight #PlayerHighlight ]==]);
     for i = 1, #highlights do
         local v = highlights[i];
-        if (v.Adornee == model and v.FillColor.G > 100) then
+        if (v.Adornee == model and v.FillColor == Color3.fromRGB(0, 150, 0)) then
             return true;
         end;
     end;
     return false;
 end;
-
 
 local player_esp = {cache = {}} do
     player_esp.__index = player_esp;
