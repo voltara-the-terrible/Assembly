@@ -17,11 +17,23 @@ local create_drawing = function(type, props)
     return a;
 end;
 
+local is_teammate = function(model)
+    local highlights = workspace:QueryDescendants([==[ Highlight #PlayerHighlight ]==]);
+    for i = 1, #highlights do
+        local v = highlights[i];
+        if (v.Adornee == model and v.FillColor.G > 100) then
+            return true;
+        end;
+    end;
+    return false;
+end;
+
+
 local player_esp = {cache = {}} do
     player_esp.__index = player_esp;
     
     player_esp.new = function(model)
-        if (player_esp.cache[model] or model.head.Transparency > 0.8 or model.Name == "LocalViewmodel") then return end;
+        if (player_esp.cache[model] or model.head.Transparency > 0.8 or model.Name == "LocalViewmodel" or is_teammate(model)) then return end;
         
         local self = setmetatable({
             ["model"] = model,
