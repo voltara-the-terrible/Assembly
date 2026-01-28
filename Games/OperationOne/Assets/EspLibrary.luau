@@ -22,7 +22,7 @@ local get_name_and_humainod = function(model)
     for i = 1, #plrs do
         local plr = plrs[i];
         local char = plr.Character;
-        if (char) then
+        if (char and char:WaitForChild("HumanoidRootPart", 4)) then
             if ((char.HumanoidRootPart.Position - model.torso.Position).Magnitude < 5) then
                 return plr.Name, char.Humanoid;
             end;
