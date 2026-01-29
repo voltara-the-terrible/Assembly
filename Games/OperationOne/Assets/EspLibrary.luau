@@ -56,7 +56,9 @@ local player_esp = {cache = {}} do
             ["drawings"] = {},
             ["children"] = {},
             ["adornments"] = {},
-            ["distance"] = math.huge
+            ["distance"] = math.huge,
+            ["on_screen"] = false,
+            ["screen_pos"] = Vector2.new(math.huge, math.huge)
         }, player_esp);
         
         local children = model:GetChildren();
@@ -108,7 +110,9 @@ local player_esp = {cache = {}} do
     
     function player_esp:Update(settings)
         local head = self.children.head;
-        local _, on = world_to_point(head.Position);
+        local point, on = world_to_point(head.Position);
+        self.screen_pos = point;
+        self.on_screen = on;
         if (not on) then return self:Hidedrawings() end;
         
         local top, bottom, left, right = self:GetBoundingBox();
